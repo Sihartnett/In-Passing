@@ -163,6 +163,8 @@ void AUnbelievableCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 	PlayerInputComponent->BindAxis("MoveRight", this, &AUnbelievableCharacter::MoveRight);
 	PlayerInputComponent->BindAction("WallRun", IE_Pressed, this, &AUnbelievableCharacter::WallRun);
 	PlayerInputComponent->BindAction("WallRun", IE_Released, this, &AUnbelievableCharacter::WallRunEnd);
+	PlayerInputComponent->BindAction("ForwardBoolSet", IE_Pressed, this, &AUnbelievableCharacter::SetWallBool);
+	PlayerInputComponent->BindAction("ForwardBoolSet", IE_Released, this, &AUnbelievableCharacter::ResetWallBool);
 
 	//Sets key binds for camera movement
 	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
@@ -429,6 +431,18 @@ void AUnbelievableCharacter::EndDodge()
 	GetCharacterMovement()->GroundFriction = 1;
 }
 
+//Set Wall Forward Movement to True
+void AUnbelievableCharacter::SetWallBool()
+{
+	isMovingForward = true;
+}
+
+//Set Wall Forward Movement to False
+void AUnbelievableCharacter::ResetWallBool()
+{
+	isMovingForward = false;
+}
+
 //Resets dodge after cooldown timer
 void AUnbelievableCharacter::DodgeCooldown()
 {
@@ -525,7 +539,7 @@ void AUnbelievableCharacter::DoubleJump()
 //Detects when the players touches the ground
 void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 {
-	RiddenWall = NULL;
+	WallBeingRode = NULL;
 	WallClimb = true;
 	DoubleJumpCounter = 0;
 	id = this;

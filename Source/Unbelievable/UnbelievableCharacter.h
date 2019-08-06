@@ -35,8 +35,10 @@ public:
 	float WallJumpTraceDistance;
 	float SingleJumpControl = 0.5f;
 	float DoubleJumpControl = 0.3f;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ridden Wall Box")
-		AActor* RiddenWall;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Wall Vars")
+		AActor* WallBeingRode;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isMovingForward;
 
 
 	//void SingleJumpIncrement();
@@ -110,6 +112,8 @@ protected:
 	void DodgeLeft();
 	void DodgeRight();
 	void EndDodge();
+	void SetWallBool();
+	void ResetWallBool();
 
 protected:
 
