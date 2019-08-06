@@ -35,6 +35,9 @@ public:
 	float WallJumpTraceDistance;
 	float SingleJumpControl = 0.5f;
 	float DoubleJumpControl = 0.3f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Ridden Wall Box")
+		AActor* RiddenWall;
+
 
 	//void SingleJumpIncrement();
 	//void DoubleJumpIncrement();
