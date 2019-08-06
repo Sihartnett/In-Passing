@@ -11,6 +11,8 @@
 #include "GameFramework/PlayerController.h"
 #include "DeathTracker.h"
 #include "DrawDebugHelpers.h"
+#include "Runtime/CoreUObject/Public/UObject/ConstructorHelpers.h"
+#include "Runtime/Engine/Classes/Components/AudioComponent.h"
 #include "Kismet/KismetStringLibrary.h"
 
 DEFINE_LOG_CATEGORY_STATIC(LogFPChar, Warning, All);
@@ -36,7 +38,10 @@ AUnbelievableCharacter::AUnbelievableCharacter()
 	WallJumpTraceDistance = 100;
 	id = this;
 	//healthPoints = 10;
+
+	
 }
+
 
 //Called on start
 void AUnbelievableCharacter::BeginPlay()
@@ -46,6 +51,8 @@ void AUnbelievableCharacter::BeginPlay()
 	UClass* player = ADeathTracker::StaticClass();
 
 	GetWorld()->SpawnActor<ADeathTracker>(player, GetActorLocation(), FRotator::ZeroRotator);
+
+	//walkTestAudioComponent->Play();
 }
 
 void AUnbelievableCharacter::takeDamage(int damageAmount)
@@ -184,6 +191,7 @@ void AUnbelievableCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 //Movement for forward and backwards
 void AUnbelievableCharacter::MoveForward(float Value)
 {
+	//callWalkingCue();
 	FVector TraceStart = GetActorLocation();
 	float traceDistance = 100;
 	float MinDistance = 9999999;
@@ -524,6 +532,7 @@ void AUnbelievableCharacter::DoubleJump()
 		WallClimb = true;
 		GetCharacterMovement()->AirControl = SingleJumpControl;
 		ACharacter::LaunchCharacter(FVector(0, 0, JumpHeight), false, true);
+		callJumpCue();
 		DoubleJumpCounter++;
 	}
 	else if (DoubleJumpCounter == 1 && DisableSpecialMovement)
@@ -532,6 +541,7 @@ void AUnbelievableCharacter::DoubleJump()
 		GetCharacterMovement()->AirControl = DoubleJumpControl;
 		ACharacter::LaunchCharacter(FVector(0, 0, JumpHeight), false, true);
 		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, 0.5f);
+		callDoubleJumpCue();
 		DoubleJumpCounter++;
 	}
 }
@@ -539,6 +549,8 @@ void AUnbelievableCharacter::DoubleJump()
 //Detects when the players touches the ground
 void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 {
+	callLandingCue();
+	//callWalkingCue();
 	WallBeingRode = NULL;
 	WallClimb = true;
 	DoubleJumpCounter = 0;

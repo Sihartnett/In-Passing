@@ -127,6 +127,10 @@ private:
 	void SaveGame();
 	UFUNCTION(BlueprintCallable, Category = "Save System Functionality")
 	void LoadGame();
+
+	// trial of sound cues variables
+
+
 public:
 	float debugFloat = 0;
 	bool isheld = false;
@@ -199,6 +203,38 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "New Camera Shake")
 		void cameraBob();
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callLandingCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callWalkingCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callJumpCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callDoubleJumpCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callWallJumpCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callWallRunCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callDodgeCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callDashJumpCue();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callHorizontalAirTravelCue();
+	
+	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
+		void callVerticalAirTravelCue();
+
+
+	
 	UPROPERTY(EditAnywhere,Category="Camera Shake Variables")
 		float rateOfShakePerSecondOfDescent=1.0f;
 
@@ -210,6 +246,7 @@ public:
 
 	UPROPERTY(EditAnywhere, Category = "Wall Run Variables")
 		float arcOfWallRun=50;
+
 
 	struct FTimerHandle MemberTimerHandle4;
 	void reset_camera_rotation();
