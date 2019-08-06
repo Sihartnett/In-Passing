@@ -525,6 +525,7 @@ void AUnbelievableCharacter::DoubleJump()
 //Detects when the players touches the ground
 void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 {
+	RiddenWall = NULL;
 	WallClimb = true;
 	DoubleJumpCounter = 0;
 	id = this;
