@@ -546,7 +546,8 @@ void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 	amountForCameraToShakeOnLand = rateOfShakePerSecondOfDescent * timeSpentInAir;
 	if (shouldShake)
 	{
-		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, amountForCameraToShakeOnLand);
+		//GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, amountForCameraToShakeOnLand);
+		cameraBob();
 	}
 }
 #pragma endregion Jump

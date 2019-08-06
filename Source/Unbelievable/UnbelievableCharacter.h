@@ -196,6 +196,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Save System Functionality")
 		void setDeathCountFromBlueprint(int numberOfDeaths);
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "New Camera Shake")
+		void cameraBob();
 
 	UPROPERTY(EditAnywhere,Category="Camera Shake Variables")
 		float rateOfShakePerSecondOfDescent=1.0f;
@@ -203,7 +205,7 @@ public:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Camera Shake Variables")
 		float timeSpentInAir;
-
+	UPROPERTY(BlueprintReadWrite,Category="Camera Shake Variable")
 	float amountForCameraToShakeOnLand;
 
 	UPROPERTY(EditAnywhere, Category = "Wall Run Variables")
