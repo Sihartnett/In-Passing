@@ -203,6 +203,9 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "New Camera Shake")
 		void cameraBob();
 
+	UFUNCTION(BlueprintImplementableEvent, Category = "Speed Line")
+		void SpeedLineFade();
+
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
 		void callLandingCue();
 

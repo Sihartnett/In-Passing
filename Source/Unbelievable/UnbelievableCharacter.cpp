@@ -549,6 +549,7 @@ void AUnbelievableCharacter::DoubleJump()
 //Detects when the players touches the ground
 void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 {
+	SpeedLineFade();
 	callLandingCue();
 	//callWalkingCue();
 	WallBeingRode = NULL;
