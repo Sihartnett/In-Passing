@@ -48,9 +48,9 @@ void AUnbelievableCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UClass* player = ADeathTracker::StaticClass();
+	//UClass* player = ADeathTracker::StaticClass();
 
-	GetWorld()->SpawnActor<ADeathTracker>(player, GetActorLocation(), FRotator::ZeroRotator);
+	//GetWorld()->SpawnActor<ADeathTracker>(player, GetActorLocation(), FRotator::ZeroRotator);
 
 	//walkTestAudioComponent->Play();
 }
@@ -540,8 +540,9 @@ void AUnbelievableCharacter::DoubleJump()
 		WallClimb = true;
 		GetCharacterMovement()->AirControl = DoubleJumpControl;
 		ACharacter::LaunchCharacter(FVector(0, 0, JumpHeight), false, true);
-		GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, 0.5f);
+		//GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, 0.5f);
 		callDoubleJumpCue();
+		cameraBob(amountForCameraToShakeOnDoubleJump);
 		DoubleJumpCounter++;
 	}
 }
@@ -560,7 +561,7 @@ void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 	if (shouldShake)
 	{
 		//GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, amountForCameraToShakeOnLand);
-		cameraBob();
+		cameraBob(amountForCameraToShakeOnLand);
 	}
 }
 #pragma endregion Jump

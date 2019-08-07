@@ -201,7 +201,7 @@ public:
 		void setDeathCountFromBlueprint(int numberOfDeaths);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "New Camera Shake")
-		void cameraBob();
+		void cameraBob(float amountToBob);
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Speed Line")
 		void SpeedLineFade();
@@ -236,7 +236,6 @@ public:
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
 		void callVerticalAirTravelCue();
 
-
 	
 	UPROPERTY(EditAnywhere,Category="Camera Shake Variables")
 		float rateOfShakePerSecondOfDescent=1.0f;
@@ -244,8 +243,12 @@ public:
 	
 	UPROPERTY(VisibleAnywhere, Category = "Camera Shake Variables")
 		float timeSpentInAir;
+	
 	UPROPERTY(BlueprintReadWrite,Category="Camera Shake Variable")
-	float amountForCameraToShakeOnLand;
+		float amountForCameraToShakeOnLand;
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Camera Shake Variables")
+		float amountForCameraToShakeOnDoubleJump;
 
 	UPROPERTY(EditAnywhere, Category = "Wall Run Variables")
 		float arcOfWallRun=50;
