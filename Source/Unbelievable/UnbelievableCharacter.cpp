@@ -168,8 +168,6 @@ void AUnbelievableCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 	//Sets key binds for movement
 	PlayerInputComponent->BindAxis("MoveForward", this, &AUnbelievableCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AUnbelievableCharacter::MoveRight);
-	PlayerInputComponent->BindAction("WallRun", IE_Pressed, this, &AUnbelievableCharacter::WallRun);
-	PlayerInputComponent->BindAction("WallRun", IE_Released, this, &AUnbelievableCharacter::WallRunEnd);
 	PlayerInputComponent->BindAction("ForwardBoolSet", IE_Pressed, this, &AUnbelievableCharacter::SetWallBool);
 	PlayerInputComponent->BindAction("ForwardBoolSet", IE_Released, this, &AUnbelievableCharacter::ResetWallBool);
 
