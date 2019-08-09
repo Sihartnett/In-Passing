@@ -33,8 +33,8 @@ public:
 		bool damageHasBeenTaken;
 	int WallJumpTraces;
 	float WallJumpTraceDistance;
-	float SingleJumpControl = 0.5f;
-	float DoubleJumpControl = 0.3f;
+	float SingleJumpControl = 0.8f;
+	float DoubleJumpControl = 0.8f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Wall Vars")
 		AActor* WallBeingRode;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
