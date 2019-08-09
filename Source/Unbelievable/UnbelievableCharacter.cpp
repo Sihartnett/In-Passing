@@ -526,7 +526,7 @@ void AUnbelievableCharacter::Jump()
 //Jump functionality, launches player into air and can be pressed twice and is reset when touching the ground
 void AUnbelievableCharacter::DoubleJump()
 {
-	if (DoubleJumpCounter == 0 && DisableSpecialMovement)
+	if (DoubleJumpCounter == 0 && DisableSpecialMovement && GetCharacterMovement()->Velocity.Z < 600)
 	{
 		WallClimb = true;
 		GetCharacterMovement()->AirControl = SingleJumpControl;
@@ -534,7 +534,7 @@ void AUnbelievableCharacter::DoubleJump()
 		callJumpCue();
 		DoubleJumpCounter++;
 	}
-	else if (DoubleJumpCounter == 1 && DisableSpecialMovement)
+	else if (DoubleJumpCounter == 1 && DisableSpecialMovement && GetCharacterMovement()->Velocity.Z < 600)
 	{
 		WallClimb = true;
 		GetCharacterMovement()->AirControl = DoubleJumpControl;
