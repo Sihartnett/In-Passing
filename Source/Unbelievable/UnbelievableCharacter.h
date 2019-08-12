@@ -243,7 +243,7 @@ public:
 		float rateOfShakePerSecondOfDescent=1.0f;
 
 	
-	UPROPERTY(VisibleAnywhere, Category = "Camera Shake Variables")
+	UPROPERTY(BlueprintReadWrite,VisibleAnywhere, Category = "Camera Shake Variables")
 		float timeSpentInAir;
 	
 	UPROPERTY(BlueprintReadWrite,Category="Camera Shake Variable")
