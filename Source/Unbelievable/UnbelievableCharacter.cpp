@@ -434,7 +434,10 @@ void AUnbelievableCharacter::DodgeRight()
 //Resets the friction after the player dodges
 void AUnbelievableCharacter::EndDodge()
 {
-	GetCharacterMovement()->GroundFriction = 1;
+	if (isOnIce == false)
+	{
+		GetCharacterMovement()->GroundFriction = 1;
+	}
 }
 
 //Set Wall Forward Movement to True

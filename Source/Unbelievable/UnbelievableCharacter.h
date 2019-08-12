@@ -39,6 +39,8 @@ public:
 		AActor* WallBeingRode;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool isMovingForward;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool isOnIce;
 
 
 	//void SingleJumpIncrement();
