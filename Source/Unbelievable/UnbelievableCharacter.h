@@ -103,6 +103,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	bool TutJustDodged = false;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	bool inMenu;
+
 protected:
 
 	void MoveForward(float Val);
