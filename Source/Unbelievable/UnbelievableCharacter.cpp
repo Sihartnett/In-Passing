@@ -313,6 +313,12 @@ void AUnbelievableCharacter::MoveForward(float Value)
 
 		StopSideMovement = false;
 		AddMovementInput(GetActorForwardVector(), Value);
+		
+		if (GetCharacterMovement()->IsMovingOnGround())
+		{
+			callWalkingCue();
+		}
+
 	}
 }
 
@@ -343,6 +349,10 @@ void AUnbelievableCharacter::MoveRight(float Value)
 	if (Value != 0.0f && !StopSideMovement)
 	{
 		AddMovementInput(GetActorRightVector(), Value);
+		if (GetCharacterMovement()->IsMovingOnGround())
+		{
+			callWalkingCue();
+		}
 	}
 }
 
