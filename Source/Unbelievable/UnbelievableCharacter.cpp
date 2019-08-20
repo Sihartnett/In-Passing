@@ -503,7 +503,7 @@ void AUnbelievableCharacter::Jump()
 			//Checks if the player hits a wall
 			if (GetWorld()->LineTraceSingleByObjectType(Hit, TraceStart, TraceEnd, ECC_WorldStatic, TraceParams))
 			{
-				callWallJumpCue();
+				//callWallJumpCue();
 				//Checks if the hit wall was just jumped from and if not it applies the values to variable needed for the jump
 				if ((Hit.Location - TraceStart).Size() < MinDistance && Hit.GetActor()->GetUniqueID() != id->
 					GetUniqueID() && Hit.Actor->ActorHasTag(TEXT("Wall")))
@@ -519,6 +519,7 @@ void AUnbelievableCharacter::Jump()
 		//Checks if the player should jump from the wall and launches them
 		if (HitLocation != FVector::ZeroVector)
 		{
+			callWallJumpCue();
 			isheld = false;
 			WallClimb = true;
 			GetCharacterMovement()->AirControl = 1;
