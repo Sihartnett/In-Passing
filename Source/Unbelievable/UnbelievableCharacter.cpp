@@ -393,6 +393,7 @@ void AUnbelievableCharacter::DodgeLeft()
 	//checks if cooldown is active
 	if (CanDodge == true && DisableSpecialMovement)
 	{
+		callDodgeCue();
 		CanDodge = false;
 		TutJustDodged = true;
 
@@ -420,6 +421,7 @@ void AUnbelievableCharacter::DodgeRight()
 	//checks if cooldown is active
 	if (CanDodge == true && DisableSpecialMovement)
 	{
+		callDodgeCue();
 		CanDodge = false;
 		TutJustDodged = true;
 
