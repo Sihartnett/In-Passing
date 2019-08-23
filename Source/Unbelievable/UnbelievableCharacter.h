@@ -138,6 +138,8 @@ private:
 
 public:
 	float debugFloat = 0;
+	UPROPERTY(BlueprintReadWrite)
+	float dodgeCoolDownFloat;
 	bool isheld = false;
 	void DodgeCooldown();
 	UFUNCTION(BlueprintCallable, Category="Yeet")
@@ -261,6 +263,9 @@ public:
 
 	struct FTimerHandle MemberTimerHandle4;
 	void reset_camera_rotation();
-
+	UFUNCTION(BlueprintImplementableEvent, Category = "CrossHair")
+		void changeCircleSize(float amountForCircle);
+	UFUNCTION(BlueprintImplementableEvent, Category = "CrossHair")
+		void lerpCircleIn();
 
 };

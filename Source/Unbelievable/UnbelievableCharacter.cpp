@@ -131,6 +131,15 @@ void AUnbelievableCharacter::Tick(float DeltaTime)
 			shouldBeHealing = false;
 		}*/
 	}
+	/*if (CanDodge == false)
+	{
+		dodgeCoolDownFloat += DeltaTime;
+		changeCircleSize(dodgeCoolDownFloat);
+	}
+	if (CanDodge == true)
+	{
+		dodgeCoolDownFloat = 0.0f;
+	}*/
 	//healthTimer += DeltaTime;
 	/*FHitResult OutHit;
 
@@ -393,6 +402,7 @@ void AUnbelievableCharacter::DodgeLeft()
 	//checks if cooldown is active
 	if (CanDodge == true && DisableSpecialMovement)
 	{
+		lerpCircleIn();
 		callDodgeCue();
 		CanDodge = false;
 		TutJustDodged = true;
@@ -421,6 +431,7 @@ void AUnbelievableCharacter::DodgeRight()
 	//checks if cooldown is active
 	if (CanDodge == true && DisableSpecialMovement)
 	{
+		lerpCircleIn();
 		callDodgeCue();
 		CanDodge = false;
 		TutJustDodged = true;
