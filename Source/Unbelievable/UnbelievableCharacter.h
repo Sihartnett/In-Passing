@@ -238,10 +238,7 @@ public:
 		void callDashJumpCue();
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
-		void callHorizontalAirTravelCue();
-	
-	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
-		void callVerticalAirTravelCue();
+		void callAirTravelCue(float Time);
 
 	
 	UPROPERTY(EditAnywhere,Category="Camera Shake Variables")

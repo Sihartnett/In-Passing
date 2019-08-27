@@ -100,6 +100,10 @@ void AUnbelievableCharacter::Tick(float DeltaTime)
 		GetCharacterMovement()->GravityScale = 1.31f;
 		timeSpentInAir += DeltaTime;
 	}
+	if (!GetCharacterMovement()->IsMovingOnGround())
+	{
+		callAirTravelCue(DeltaTime);
+	}
 	else
 	{
 		GetCharacterMovement()->GravityScale = 1;
