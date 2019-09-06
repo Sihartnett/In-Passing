@@ -742,7 +742,7 @@ void AUnbelievableCharacter::SaveGame()
 		break;
 	}
 	//UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot"+indexOfSaveFile), 0);
-	GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Saved Game"));
+	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Saved Game"));
 }
 void AUnbelievableCharacter::LoadGame()
 {
