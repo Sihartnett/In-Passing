@@ -591,7 +591,7 @@ void AUnbelievableCharacter::Landed(const FHitResult& Hit)
 	if (shouldShake)
 	{
 		//GetWorld()->GetFirstPlayerController()->PlayerCameraManager->PlayCameraShake(MyShake, amountForCameraToShakeOnLand);
-		cameraBob(FMath::Clamp(amountForCameraToShakeOnLand, 0.0f, 50.0f));
+		cameraBob(amountForCameraToShakeOnLand);
 	}
 }
 #pragma endregion Jump
