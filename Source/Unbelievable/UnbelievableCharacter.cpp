@@ -38,8 +38,6 @@ AUnbelievableCharacter::AUnbelievableCharacter()
 	WallJumpTraceDistance = 100;
 	id = this;
 	//healthPoints = 10;
-
-	
 }
 
 
@@ -47,20 +45,13 @@ AUnbelievableCharacter::AUnbelievableCharacter()
 void AUnbelievableCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
-	//UClass* player = ADeathTracker::StaticClass();
-
-	//GetWorld()->SpawnActor<ADeathTracker>(player, GetActorLocation(), FRotator::ZeroRotator);
-
-	//walkTestAudioComponent->Play();
+	LoadTotalGameTime();
 }
 
 void AUnbelievableCharacter::takeDamage(int damageAmount)
 {
 	healthPoints -= damageAmount;
 }
-
-
 
 //Updates every frame
 void AUnbelievableCharacter::Tick(float DeltaTime)
@@ -109,13 +100,8 @@ void AUnbelievableCharacter::Tick(float DeltaTime)
 		GetCharacterMovement()->GravityScale = 1;
 		timeSpentInAir = 0.0f;
 	}
-	float_TimeSpentInGame += DeltaTime;
 
-	/*if (healthTimer > rateOfRegeneration)
-	{
-		healthTimer = 0;
-		RegainHealth();
-	}*/
+
 	if (damageHasBeenTaken)
 	{
 		healthTimer += DeltaTime;
@@ -130,39 +116,9 @@ void AUnbelievableCharacter::Tick(float DeltaTime)
 	{
 		RegainHealth();
 		shouldBeHealing = false;
-		/*if (healthPoints == healthPointsMaximum)
-		{
-			shouldBeHealing = false;
-		}*/
 	}
-	/*if (CanDodge == false)
-	{
-		dodgeCoolDownFloat += DeltaTime;
-		changeCircleSize(dodgeCoolDownFloat);
-	}
-	if (CanDodge == true)
-	{
-		dodgeCoolDownFloat = 0.0f;
-	}*/
-	//healthTimer += DeltaTime;
-	/*FHitResult OutHit;
-
-	FVector Start = FirstPersonCameraComponent->GetComponentLocation();
-	FVector ForwardVector = FirstPersonCameraComponent->GetForwardVector();
-	FVector End = (Start + (ForwardVector*1000.0f));
-
-	FCollisionQueryParams CollisionParams;
-	DrawDebugLine(GetWorld(),Start,End,FColor::Green,false,1,0,1);
-
-	bool isHit = GetWorld()->LineTraceSingleByChannel(OutHit, Start, End, ECC_Visibility, CollisionParams);
-
-	if (isHit)
-	{
-		if (OutHit.bBlockingHit)
-		{
-			GEngine->AddOnScreenDebugMessage(-1, 1.f, FColor::Red, FString::Printf(TEXT("You are hitting: %s"), *OutHit.GetActor()->GetName()));
-		}
-	}*/
+	
+	float_TimeSpentInGame += DeltaTime;
 }
 
 //Initialize keyboard inputs
@@ -170,8 +126,9 @@ void AUnbelievableCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 {
 	check(PlayerInputComponent);
 	// Sets up test bindings for save and load
-	InputComponent->BindAction("Save", IE_Pressed, this, &AUnbelievableCharacter::tempSaveGame);
+	InputComponent->BindAction("Save", IE_Pressed, this, &AUnbelievableCharacter::SaveGame);
 	InputComponent->BindAction("Load", IE_Pressed, this, &AUnbelievableCharacter::LoadGame);
+
 	//Sets key binds for jump
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &AUnbelievableCharacter::Jump);
 
@@ -651,63 +608,10 @@ void AUnbelievableCharacter::setLevelBeingPlayed(int levelOfIndex)
 	ref_LevelBeingPlayed = levelOfIndex;
 }
 
-void AUnbelievableCharacter::tempSaveGame()
-{
-	UUnbelievable_SaveGame* SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::CreateSaveGameObject(UUnbelievable_SaveGame::StaticClass()));
-	SaveGameInstance->PlayerLocation = this->GetActorLocation();
-	FDateTime dateTime=dateTime.Now();
-	int month = dateTime.GetMonth();
-	int day = dateTime.GetDay();
-	FString dateOfPlaySession = FString::FromInt(month);
-	dateOfPlaySession.Append("/");
-	dateOfPlaySession.Append(FString::FromInt(day));
-	dateOfPlaySession.Append("/");
-	dateOfPlaySession.Append(FString::FromInt(dateTime.GetYear()));
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, FString::Printf(TEXT("The day found is: %s"), *dateOfPlaySession));
-	SaveGameInstance->dateOfLastPlay = dateOfPlaySession;
-	SaveGameInstance->numberOfDeathes = ref_NumberofDeaths;
-	SaveGameInstance->gameTimeTotal = float_TimeSpentInGame;
-	SaveGameInstance->modeOfPlay = ref_GameMode;
-	SaveGameInstance->levelPlayed = ref_LevelBeingPlayed;
-	switch (indexOfSaveFile)
-	{
-	case 0:
-		UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot0"), 0);
-		break;
-	case 1:
-		UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot1"), 0);
-		break;
-	case 2:
-		UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot2"), 0);
-		break;
-	case 3:
-		UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot3"), 0);
-		break;
-	case 4:
-		UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot4"), 0);
-		break;
-	}
-	//UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot"), 0);
-	//FString command = FString(TEXT("HighResShot 1"));
-	//if (GEditor)
-	//{
-	//	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("We made it to G Editor"));
-	//	UWorld* world = GEditor->GetEditorWorldContext().World();
-
-	//	if (world)
-	//	{
-	//		GEditor->Exec(world, *command);
-	//	}
-	//	else
-	//	{
-	//		//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Photoshoot"));
-	//	}
-	//}
-	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Saved Game"));
-}
 void AUnbelievableCharacter::SaveGame()
 {
 	UUnbelievable_SaveGame* SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::CreateSaveGameObject(UUnbelievable_SaveGame::StaticClass()));
+	
 	SaveGameInstance->PlayerLocation = locationToSet;
 	FDateTime dateTime = dateTime.Now();
 	int month = dateTime.GetMonth();
@@ -717,10 +621,13 @@ void AUnbelievableCharacter::SaveGame()
 	dateOfPlaySession.Append(FString::FromInt(day));
 	dateOfPlaySession.Append("/");
 	dateOfPlaySession.Append(FString::FromInt(dateTime.GetYear()));
-	//GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Orange, FString::Printf(TEXT("The day found is: %s"), *dateOfPlaySession));
+
 	SaveGameInstance->dateOfLastPlay = dateOfPlaySession;
 	SaveGameInstance->numberOfDeathes = ref_NumberofDeaths;
-	SaveGameInstance->gameTimeTotal = float_TimeSpentInGame;
+
+	// 
+	SaveGameInstance->gameTimeTotal = (f_TotalGameplayTime + float_TimeSpentInGame);
+
 	SaveGameInstance->modeOfPlay = ref_GameMode;
 	SaveGameInstance->levelPlayed = ref_LevelBeingPlayed;
 	switch (indexOfSaveFile)
@@ -742,11 +649,15 @@ void AUnbelievableCharacter::SaveGame()
 		break;
 	}
 	//UGameplayStatics::SaveGameToSlot(SaveGameInstance, TEXT("MySlot"+indexOfSaveFile), 0);
-	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Saved Game"));
+
+	// FString debugString = FString::Printf(TEXT("Saved Game. gameTimeTotal: %.2f - f_totalGameplayTime: %.2f - Time Spent in Game: %.2f"), SaveGameInstance->gameTimeTotal, f_TotalGameplayTime, float_TimeSpentInGame);
+	// GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, debugString);
 }
+
 void AUnbelievableCharacter::LoadGame()
 {
 	UUnbelievable_SaveGame* SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::CreateSaveGameObject(UUnbelievable_SaveGame::StaticClass()));
+	
 	switch (indexOfSaveFile)
 	{
 	case 0:
@@ -765,37 +676,46 @@ void AUnbelievableCharacter::LoadGame()
 		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot4", 0));
 		break;
 	}
+
 	this->SetActorLocation(SaveGameInstance->PlayerLocation);
 	ref_NumberofDeaths = SaveGameInstance->numberOfDeathes;
-	float_TimeSpentInGame = SaveGameInstance->gameTimeTotal;
+
+	// float_TimeSpentInGame = SaveGameInstance->gameTimeTotal;
+	f_TotalGameplayTime = SaveGameInstance->gameTimeTotal;
+
 	ref_GameMode = SaveGameInstance->modeOfPlay;
 	ref_LevelBeingPlayed = SaveGameInstance->levelPlayed;
-	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game"));
+
+	// GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game"));
 }
-//void AUnbelievableCharacter::SingleJumpIncrement()
-//{
-//	if (SingleJumpControl < 1)
-//	{
-//		SingleJumpControl += 0.1f;
-//		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Single Jump Increase Control"));
-//	}
-//	else
-//	{
-//		SingleJumpControl = 0;
-//		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Single Jump Control Set To Zero"));
-//	}
-//}
-//void AUnbelievableCharacter::DoubleJumpIncrement()
-//{
-//	if (DoubleJumpControl < 1)
-//	{
-//		DoubleJumpControl += 0.1f;
-//		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Double Jump Increase Control"));
-//	}
-//	else
-//	{
-//		DoubleJumpControl = 0;
-//		GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Double Jump Control Set To Zero"));
-//	}
-//}
+
+void AUnbelievableCharacter::LoadTotalGameTime() {
+	UUnbelievable_SaveGame* SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::CreateSaveGameObject(UUnbelievable_SaveGame::StaticClass()));
+
+	switch (indexOfSaveFile)
+	{
+	case 0:
+		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot0", 0));
+		break;
+	case 1:
+		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot1", 0));
+		break;
+	case 2:
+		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot2", 0));
+		break;
+	case 3:
+		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot3", 0));
+		break;
+	case 4:
+		SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::LoadGameFromSlot("MySlot4", 0));
+		break;
+	}
+	
+	if (SaveGameInstance == nullptr) {
+		return;
+	}
+
+	// GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Restored Total Gameplay Time"));
+	f_TotalGameplayTime = SaveGameInstance->gameTimeTotal;
+}
 #pragma endregion Debug

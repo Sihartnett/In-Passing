@@ -127,11 +127,12 @@ protected:
 	void Landed(const FHitResult& Hit) override;
 	void Debug();
 private:
-	void tempSaveGame();
 	UFUNCTION(BlueprintCallable, Category="Save System Functionality")
 	void SaveGame();
 	UFUNCTION(BlueprintCallable, Category = "Save System Functionality")
 	void LoadGame();
+
+	void LoadTotalGameTime();
 
 	// trial of sound cues variables
 
@@ -174,6 +175,9 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int indexOfSaveFile;
 	
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+		float f_TotalGameplayTime;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 		float float_TimeSpentInGame;
 
