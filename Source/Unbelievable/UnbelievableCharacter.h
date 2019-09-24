@@ -162,6 +162,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Location of Saving")
 		FVector locationToSet;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Rocation of Saving")
+		FRotator rotationToSet;
+
 	bool WallClimb = true;
 	bool WallClimb2 = true;
 
@@ -192,6 +195,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable, Category = "Save System Functionality")
 		void setModeForSave(int indexOfGameMode);
+
+	/*UFUNCTION(BlueprintImplementableEvent, Category = "Set Player Rotation on Load")
+		void setPlayerRotationOnLoad(FRotator Rotation);*/
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FString ref_GameMode;

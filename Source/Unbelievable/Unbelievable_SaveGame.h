@@ -21,6 +21,9 @@ public:
 		FVector PlayerLocation;
 
 	UPROPERTY(EditAnywhere)
+		FRotator PlayerRotation;
+
+	UPROPERTY(EditAnywhere)
 		float gameTimeTotal;
 
 	UPROPERTY(EditAnywhere)

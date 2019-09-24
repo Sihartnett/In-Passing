@@ -6,6 +6,7 @@
 UUnbelievable_SaveGame::UUnbelievable_SaveGame()
 {
 	PlayerLocation = FVector(0.f, 0.f, 0.f);
+	PlayerRotation = FRotator(0.f, 0.f, 0.f);
 	gameTimeTotal = 12.0f;
 	dateOfLastPlay = FString(TEXT("9/07/2019"));
 	modeOfPlay = FString(TEXT("Exploration"));

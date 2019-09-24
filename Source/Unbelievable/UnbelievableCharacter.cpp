@@ -603,6 +603,7 @@ void AUnbelievableCharacter::setModeForSave(int indexOfGameMode)
 	}
 }
 
+
 void AUnbelievableCharacter::setLevelBeingPlayed(int levelOfIndex)
 {
 	ref_LevelBeingPlayed = levelOfIndex;
@@ -613,6 +614,7 @@ void AUnbelievableCharacter::SaveGame()
 	UUnbelievable_SaveGame* SaveGameInstance = Cast<UUnbelievable_SaveGame>(UGameplayStatics::CreateSaveGameObject(UUnbelievable_SaveGame::StaticClass()));
 	
 	SaveGameInstance->PlayerLocation = locationToSet;
+	SaveGameInstance->PlayerRotation = rotationToSet;
 	FDateTime dateTime = dateTime.Now();
 	int month = dateTime.GetMonth();
 	int day = dateTime.GetDay();
@@ -685,7 +687,9 @@ void AUnbelievableCharacter::LoadGame()
 
 	ref_GameMode = SaveGameInstance->modeOfPlay;
 	ref_LevelBeingPlayed = SaveGameInstance->levelPlayed;
-
+	//setPlayerRotationOnLoad(rotationToSet);
+	rotationToSet = SaveGameInstance->PlayerRotation;
+	this->SetActorRotation(SaveGameInstance->PlayerRotation);
 	// GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game"));
 }
 
