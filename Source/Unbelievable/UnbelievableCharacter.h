@@ -86,7 +86,7 @@ public:
 
 	UFUNCTION()
 	void DoubleJump();
-	UPROPERTY()
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	int DoubleJumpCounter;
 	UFUNCTION()
 	void WallRun();
@@ -155,6 +155,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite)
 		bool DisableSpecialMovement = true;
+
+	UPROPERTY(BlueprintReadWrite)
+		bool WingedMode = false;
 
 	UPROPERTY(BlueprintReadWrite)
 		bool shouldShake = true;
@@ -249,6 +252,12 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Sound Effects")
 		void callAirTravelCue(float Time);
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Winged Mode")
+		void WingedModeOn();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Winged Mode")
+		void WingedModeOff();
 
 	
 	UPROPERTY(EditAnywhere,Category="Camera Shake Variables")
