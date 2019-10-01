@@ -5,7 +5,6 @@
 #include "Runtime/Engine/Classes/GameFramework/Actor.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
-#include "Editor/UnrealEd/Classes/Editor/EditorEngine.h"
 #include "Runtime/Core/Public/GenericPlatform/GenericPlatformMath.h"
 #include "Runtime/Engine/Classes/Components/SceneComponent.h"
 // Sets default values
