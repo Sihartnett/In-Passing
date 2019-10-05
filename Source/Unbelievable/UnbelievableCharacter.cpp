@@ -25,8 +25,8 @@ AUnbelievableCharacter::AUnbelievableCharacter()
 	FirstPersonCameraComponent->SetupAttachment(GetCapsuleComponent());
 	FirstPersonCameraComponent->RelativeLocation = FVector(30.0, 1.75f, 64.f); // Position the camera
 	FirstPersonCameraComponent->bUsePawnControlRotation = true;
-	BaseTurnRate = 45.f;
-	BaseLookUpRate = 45.f;
+	//BaseTurnRate = 45.f;
+	//BaseLookUpRate = 45.f;
 
 	//Sets up Jump variables
 	JumpHeight = 600.f;
@@ -141,10 +141,10 @@ void AUnbelievableCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 	PlayerInputComponent->BindAction("ForwardBoolSet", IE_Released, this, &AUnbelievableCharacter::ResetWallBool);
 
 	//Sets key binds for camera movement
-	PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
+	//PlayerInputComponent->BindAxis("Turn", this, &APawn::AddControllerYawInput);
 	/*PlayerInputComponent->BindAxis("TurnRate", this, &AUnbelievableCharacter::TurnAtRate);
 	PlayerInputComponent->BindAxis("LookUp", this, &APawn::AddControllerPitchInput);*/
-	PlayerInputComponent->BindAxis("LookUp", this, &AUnbelievableCharacter::LookUpAtRate);
+	//PlayerInputComponent->BindAxis("LookUp", this, &AUnbelievableCharacter::LookUpAtRate);
 
 	//Sets key binds for dodge
 	PlayerInputComponent->BindAction("DodgeLeft", IE_Pressed, this, &AUnbelievableCharacter::DodgeLeft);
@@ -349,8 +349,8 @@ void AUnbelievableCharacter::TurnAtRate(float Rate)
 //Movement for looking up and down
 void AUnbelievableCharacter::LookUpAtRate(float Rate)
 {
-	if (bUseControllerRotationRoll == false)
-		AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
+	//if (bUseControllerRotationRoll == false)
+		//AddControllerPitchInput(Rate * BaseLookUpRate * GetWorld()->GetDeltaSeconds());
 }
 #pragma endregion CoreMovement
 
