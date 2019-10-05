@@ -30,7 +30,7 @@ AUnbelievableCharacter::AUnbelievableCharacter()
 
 	//Sets up Jump variables
 	JumpHeight = 600.f;
-	GetCharacterMovement()->AirControl = 1.0f;
+	GetCharacterMovement()->AirControl = .9f;
 	WallJumpTraces = 20;
 	WalljumpHorizontalStrenght = 1200;
 	WalljumpUpwardsStrength = 1500;
