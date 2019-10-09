@@ -3,7 +3,9 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Camera/CameraShake.h"
+#include "Engine/TextureRenderTarget2D.h"
 #include "UnbelievableCharacter.generated.h"
+
 
 class UInputComponent;
 
@@ -41,6 +43,8 @@ public:
 		bool isMovingForward;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		bool isOnIce;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UTextureRenderTarget2D* ScreenshotToPass;
 
 
 	//void SingleJumpIncrement();

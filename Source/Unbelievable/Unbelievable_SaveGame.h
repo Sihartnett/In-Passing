@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/SaveGame.h"
+#include "Engine/TextureRenderTarget2D.h"
 #include "Unbelievable_SaveGame.generated.h"
+
 
 /**
  * 
@@ -37,4 +39,7 @@ public:
 	
 	UPROPERTY(EditAnywhere)
 		int levelPlayed;
+
+	UPROPERTY(EditAnywhere)
+		UTextureRenderTarget2D* ScreenshotSave;
 };

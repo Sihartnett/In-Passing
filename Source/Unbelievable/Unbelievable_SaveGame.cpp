@@ -12,4 +12,5 @@ UUnbelievable_SaveGame::UUnbelievable_SaveGame()
 	modeOfPlay = FString(TEXT("Exploration"));
 	numberOfDeathes = 7;
 	levelPlayed = 1;
+	ScreenshotSave = NULL;
 }

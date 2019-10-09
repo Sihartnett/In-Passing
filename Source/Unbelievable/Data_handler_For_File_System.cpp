@@ -65,6 +65,7 @@ void AData_handler_For_File_System::LoadGame(int index)
 	modeForFile = SaveGameInstance->modeOfPlay;
 	deathsForFile = SaveGameInstance->numberOfDeathes;
 	levelForFile = SaveGameInstance->levelPlayed;
+	ScreenshotForFile = SaveGameInstance->ScreenshotSave;
 	calculateStringForTime();
 	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game For Main Menu"));
 }

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Engine/TextureRenderTarget2D.h"
 #include "Data_handler_For_File_System.generated.h"
 
 UCLASS()
@@ -34,6 +35,9 @@ public:
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int deathsForFile;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		UTextureRenderTarget2D* ScreenshotForFile;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int levelForFile;

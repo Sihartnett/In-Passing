@@ -617,6 +617,7 @@ void AUnbelievableCharacter::SaveGame()
 	
 	SaveGameInstance->PlayerLocation = locationToSet;
 	SaveGameInstance->PlayerRotation = rotationToSet;
+	SaveGameInstance->ScreenshotSave = ScreenshotToPass;
 	FDateTime dateTime = dateTime.Now();
 	int month = dateTime.GetMonth();
 	int day = dateTime.GetDay();
@@ -691,6 +692,7 @@ void AUnbelievableCharacter::LoadGame()
 	ref_LevelBeingPlayed = SaveGameInstance->levelPlayed;
 	//setPlayerRotationOnLoad(rotationToSet);
 	rotationToSet = SaveGameInstance->PlayerRotation;
+	ScreenshotToPass = SaveGameInstance->ScreenshotSave;
 	this->SetActorRotation(SaveGameInstance->PlayerRotation);
 	// GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game"));
 }
