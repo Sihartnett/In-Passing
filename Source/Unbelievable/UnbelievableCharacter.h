@@ -157,6 +157,24 @@ public:
 
 	FORCEINLINE class UCameraComponent* GetFirstPersonCameraComponent() const { return FirstPersonCameraComponent; }
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool WingedModeVarPass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool NarrativeModeVarPass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float SensitivityVarPass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MasterVolumeVarPass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float SFXVolumeVarPass;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MusicVarPass;
+
 	UPROPERTY(BlueprintReadWrite)
 		bool DisableSpecialMovement = true;
 

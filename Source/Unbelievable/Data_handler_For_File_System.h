@@ -37,6 +37,24 @@ public:
 		int deathsForFile;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool WingedToggleForFile = false;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool NarrativeToggleForFile = true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float SensitivityForFile = 45.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MasterVolumeForFile = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float SFXVolumeForFile = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		float MusicVolumeForFile = 1.0f;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UTextureRenderTarget2D* ScreenshotForFile;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)

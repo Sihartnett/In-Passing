@@ -66,6 +66,12 @@ void AData_handler_For_File_System::LoadGame(int index)
 	deathsForFile = SaveGameInstance->numberOfDeathes;
 	levelForFile = SaveGameInstance->levelPlayed;
 	ScreenshotForFile = SaveGameInstance->ScreenshotSave;
+	WingedToggleForFile = SaveGameInstance->WingedToggleSave;
+	NarrativeToggleForFile = SaveGameInstance->NarrativeToggleSave;
+	SensitivityForFile = SaveGameInstance->SensitivitySave;
+	MasterVolumeForFile = SaveGameInstance->MasterVolumeSave;
+	SFXVolumeForFile = SaveGameInstance->SFXVolumeSave;
+	MusicVolumeForFile = SaveGameInstance->MusicVolumeSave;
 	calculateStringForTime();
 	//GEngine->AddOnScreenDebugMessage(-1, 15, FColor::Red, TEXT("Loaded Game For Main Menu"));
 }

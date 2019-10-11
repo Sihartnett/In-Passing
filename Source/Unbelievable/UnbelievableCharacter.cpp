@@ -618,6 +618,12 @@ void AUnbelievableCharacter::SaveGame()
 	SaveGameInstance->PlayerLocation = locationToSet;
 	SaveGameInstance->PlayerRotation = rotationToSet;
 	SaveGameInstance->ScreenshotSave = ScreenshotToPass;
+	SaveGameInstance->WingedToggleSave = WingedModeVarPass;
+	SaveGameInstance->NarrativeToggleSave = NarrativeModeVarPass;
+	SaveGameInstance->SensitivitySave = SensitivityVarPass;
+	SaveGameInstance->MasterVolumeSave = MasterVolumeVarPass;
+	SaveGameInstance->SFXVolumeSave = SFXVolumeVarPass;
+	SaveGameInstance->MusicVolumeSave = MusicVarPass;
 	FDateTime dateTime = dateTime.Now();
 	int month = dateTime.GetMonth();
 	int day = dateTime.GetDay();
