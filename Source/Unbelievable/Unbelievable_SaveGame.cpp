@@ -18,5 +18,5 @@ UUnbelievable_SaveGame::UUnbelievable_SaveGame()
 	MasterVolumeSave = 1.0f;
 	SFXVolumeSave = 1.0f;
 	MusicVolumeSave = 1.0f;
-	ScreenshotSave = NULL;
+	ScreenshotSave;
 }
