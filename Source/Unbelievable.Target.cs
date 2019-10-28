@@ -8,6 +8,7 @@ public class UnbelievableTarget : TargetRules
 	public UnbelievableTarget(TargetInfo Target) : base(Target)
 	{
 		Type = TargetType.Game;
+        bUsesSteam = true;
 		ExtraModuleNames.Add("Unbelievable");
 	}
 }
