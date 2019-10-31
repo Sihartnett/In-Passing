@@ -60,4 +60,7 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UTextureRenderTarget2D* ScreenshotSave;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+		bool WingedWasUsed = false;
 };

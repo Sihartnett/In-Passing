@@ -19,4 +19,5 @@ UUnbelievable_SaveGame::UUnbelievable_SaveGame()
 	SFXVolumeSave = 1.0f;
 	MusicVolumeSave = 1.0f;
 	ScreenshotSave;
+	WingedWasUsed = false;
 }
